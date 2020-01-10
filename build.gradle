@@ -2,6 +2,7 @@
 // for different types of code. Here we apply the Java plugin, which provides
 // all the tools needed to build player code!
 apply plugin: 'java'
+//apply plugin: 'kotlin'
 
 // The Scala plugin expands upon the Java plugin, allowing us to compile Scala source files.
 //apply plugin: 'scala'
@@ -89,6 +90,7 @@ dependencies {
 
     // The Battlecode client.
     client group: 'org.battlecode', name: clientName, version: versions.battlecode
+// moe     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // Scala!
     // implementation 'org.scala-lang:scala-library:2.11.7'
@@ -315,3 +317,24 @@ task unpackClient32(type: Copy, dependsOn: configurations.client32) {
 
 unpackClient32.onlyIf { arch32 }
 build.dependsOn('unpackClient32')
+/*
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+*/
